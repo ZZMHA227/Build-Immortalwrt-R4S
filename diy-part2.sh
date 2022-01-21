@@ -20,3 +20,8 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argonv3/g' feeds/luci/collections/luci
 export DATE_VERSION=$(date -d "$(rdate -n -4 -p pool.ntp.org)" +'%Y-%m-%d')
 sed -i "s/%C/%C (${DATE_VERSION})/g" package/base-files/files/etc/openwrt_release
 
+# Rename hostname to OpenWrt
+pushd package/base-files/files/bin
+sed -i 's/ImmortalWrt/OpenWrt/g' config_generate
+popd
+
